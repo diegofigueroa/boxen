@@ -26,10 +26,11 @@ class people::kpassapk {
   $emacs_d = "${home}/dotfiles/emacs.d"
   
   boxen::osx_defaults { 'Expand save panel by default':
-      key    => 'NSNavPanelExpandedStateForSaveMode',
-      domain => 'NSGlobalDomain',
-      value  => 'true',
+    key    => 'NSNavPanelExpandedStateForSaveMode',
+    domain => 'NSGlobalDomain',
+    value  => 'true',
   }
+
   boxen::osx_defaults { 'Expand print panel by default':
       key    => 'PMPrintingExpandedStateForPrint',
       domain => 'NSGlobalDomain',
