@@ -5,6 +5,13 @@ class people::kpassapk {
   include zsh    
   include ohmyzsh
   include tmux
+  include packer
+  include dropbox
+  include adium
+  include reattachtousernamespace
+  include git-flow
+  include virtualbox
+  include python
   
   $home = "/Users/kpassarelli"
 
@@ -109,6 +116,12 @@ class people::kpassapk {
       target => "${source_dir}/${name}",
       force  => true
     }
+  }
+
+  homebrew::tap {
+    'nviennot/tmate':
+      } -> package { 'tmate':
+      ensure => present,
   }
 
 }

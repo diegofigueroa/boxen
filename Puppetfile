@@ -5,7 +5,7 @@
 # environment.
 
 # Shortcut for a module from GitHub's boxen organization
-def github(name, *args)
+def org(name, module_name, *args)
   options ||= if args.last.is_a? Hash
     args.last
   else
@@ -13,12 +13,22 @@ def github(name, *args)
   end
 
   if path = options.delete(:path)
-    mod name, :path => path
+    mod module_name, :path => path
   else
     version = args.first
-    options[:repo] ||= "boxen/puppet-#{name}"
-    mod name, version, :github_tarball => options[:repo]
+    options[:repo] ||= "#{name}/puppet-#{module_name}"
+    mod module_name, version, :github_tarball => options[:repo]
   end
+end
+
+# Shortcut for a module from GitHub's BlueKite organization
+def bluekite(name, *args)
+  org("blue-kite", name, *args)
+end
+
+# Shortcut for a module from GitHub's Boxen organization
+def github(name, *args)
+  org("boxen", name, *args)
 end
 
 # Shortcut for a module under development
@@ -61,8 +71,7 @@ github "stdlib",      "4.1.0", :repo => "puppetlabs/puppetlabs-stdlib"
 github "sudo",        "1.0.0"
 github "xquartz",     "1.1.1"
 
-# Optional/custom modules. There are tons available at
-# https://github.com/boxen.
+# Other modules from Github's Boxen repo
 
 github "osx", "1.0.0"
 github "emacs"
@@ -70,5 +79,15 @@ github "iterm2"
 github "spotify"
 github "zsh"
 github "tmux"
+github "wget"
+github "dropbox"
+github "adium"
+github "python"
+
+# Other modules from Github's Bluekite repo
+
+bluekite "virtualbox"
 
 mod "ohmyzsh", :git => "https://github.com/samjsharpe/puppet-ohmyzsh.git"
+mod "reattachtousernamespace", :git => "https://github.com/agustinvinao/puppet-reattach-to-user-namespace.git"
+mod "git-flow", :git => "https://github.com/kpassapk/puppet-git-flow.git"
