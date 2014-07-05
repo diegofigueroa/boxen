@@ -124,4 +124,8 @@ class people::kpassapk {
       ensure => present,
   }
 
+  package { 'markdown':
+    ensure => present
+  }
+
 }
