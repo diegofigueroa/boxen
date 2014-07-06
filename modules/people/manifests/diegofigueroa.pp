@@ -1,17 +1,45 @@
 class people::diegofigueroa {
-  include emacs
+  include virtualbox
+  include vagrant
+  include packer
+  include git-flow
+  include python
   include vim
   include iterm2::dev
   include spotify
-  include packer
   include dropbox
   include adium
   include reattachtousernamespace
-  include git-flow
-  include virtualbox
-  include python
+  include calibre
 
-  $home = "/Users/dfigueroa"
+  include java
+  include homebrew
+  include zookeeper
+  include redis
+  include mysql
+
+  # maven
+  # nginx for reverse-proxy between prexoom and xoom
+  # apache for siteContent
+  # perforce
+  # xoom dns servers
+  # .profile file
+
+  $home = '/Users/dfigueroa'
+
+  class { 'intellij':
+    edition => 'ultimate',
+    version => '13.1.1'
+  }
+
+  class { 'vagrant':
+    completion => true
+  }
+
+  exec { 'set mysql root password':
+    command => 'mysqladmin -u root password r00t',
+    before => Service['dev.mysql']  # verify if this works...
+  }
 
   boxen::osx_defaults { 'Expand save panel by default':
     key    => 'NSNavPanelExpandedStateForSaveMode',

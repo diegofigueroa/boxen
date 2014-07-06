@@ -83,10 +83,18 @@ github "wget"
 github "dropbox"
 github "adium"
 github "python"
+github "vagrant"
+github "calibre"
+
+github "zookeeper"
+github "redis"
+github "java"
+github "intellij"
 
 # Other modules from Github's Bluekite repo
 
 bluekite "virtualbox"
+bluekite "mysql51"
 
 mod "ohmyzsh", :git => "https://github.com/samjsharpe/puppet-ohmyzsh.git"
 mod "reattachtousernamespace", :git => "https://github.com/agustinvinao/puppet-reattach-to-user-namespace.git"
